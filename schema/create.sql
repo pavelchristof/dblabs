@@ -14,8 +14,9 @@ create table Types (
 );
 
 create table Values (
-  id int primary key references Declarations(id),
-  name varchar(1024) unique not null
+  id int references Declarations(id),
+  name varchar(1024) not null,
+  primary key (id, name)
 );
 
 -- Types.
@@ -36,26 +37,34 @@ create table Enumerations (
 -- Values.
 
 create table Enumerators (
-  id int primary key references Values(id),
-  enum int unique not null references Enumerations(id)
+  id int primary key,
+  name varchar(1024) not null,
+  enum int not null references Enumerations(id),
+  foreign key (id, name) references Values(id, name),
+  unique (name, enum)
 );
 
 create table Functions (
-  id int primary key references Values(id),
+  id int primary key,
+  name varchar(1024) not null,
   class int references Classes(id),
-  returnType int not null references Types(id)
+  returnType int not null references Types(id),
+  foreign key (id, name) references Values(id, name)
 );
 
 create table Arguments (
   func int references Functions(id),
-  index int,
+  index int not null,
   type int not null references Types(id),
   primary key (func, index)
 );
 
 create table Variables (
-  id int primary key references Values(id),
-  type int not null references Types(id)
+  id int primary key,
+  name varchar(1024) not null,
+  type int not null references Types(id),
+  foreign key (id, name) references Values(id, name),
+  unique (name)
 );
 
 -- Relations.

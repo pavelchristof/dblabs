@@ -4,25 +4,63 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Strona z bad danych</title>
-      <meta name="description" content="Strona z baz danych">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Strona z bad danych</title>
+    <meta name="description" content="Strona z baz danych">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
-      body {
-        padding-top: 50px;
-        padding-bottom: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+      body {
+        padding-bottom: 50px;
+      }
+    </style>
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body>
-    <img src="img/erm.png" alt="ERM Diagram">
+    <div class="container">
+      <div class="page-header">
+        <h1>Schemat bazy danych</h1>
+      </div>
+
+      <p>
+        <a href="schema/create.sql"><button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-download"></span>&nbsp;
+            Kod sql
+        </button></a>
+        na podstawie którego miał być wygenerowany poniższy diagram (ale okazało się, że ta funkcja Visual Paradigm nie działa zbyt dobrze).
+      </p>
+
+      <p>
+        Opis zadania nie jest zbyt szczegółowy, więc założyłem kilka rzeczy:
+        <ul>
+          <li>Deklaracje dzielą się na typy (klasy, typy wbudowane, ...) i wartości (zmienne globalne, funkcje, ...).</li>
+          <li>Żadne dwa typy nie mogą mieć takiej samej nazwy.</li>
+          <li>Żadne dwie zmienne globalne nie mogą mieć tej samej nazwy.</li>
+          <li>Wewnątrz jednej enumeracji nie może być dwóch enumeratorów o takiej samej nazwie.</li>
+          <li>Funkcje/metody mogę być przeciążane, więc ich nazwy nie są unikalne.</li>
+          <li>
+            Metody nie mają modyfikatorów dostępu. Jeśli jednak okaże się, że powinny mieć to może warto by
+            oddzielić funkcje od metod (funkcja jest aktualnie reprezentowana jako metoda z klasą null).
+          </li>
+          <li>Nie każda deklaracja ma przypisany plik, bo np. typy wbudowane nie mają.</li>
+          <li>Różnica pomiędzy strukturami i klasami jest taka jak w C++.</li>
+        </ul>
+      </p>
+
+      <p>
+        Diagram jest wykończony gimpem, jako że Visual Paradigm w pewnym momencie odmówił dalszej współpracy.
+      </p>
+
+      <div class="page-header">
+        <h1>Diagram związków encji</h1>
+      </div>
+
+      <img src="img/erm.png" class="img-responsive" alt="Diagram związków encji">
+    </div>
   </body>
 </html>
