@@ -65,7 +65,8 @@
 # http://httpd.apache.org/docs/current/content-negotiation.html#multiviews
 # http://www.webmasterworld.com/apache/3808792.htm
 
-Options -MultiViews
+# BUG: this triggers internal server error
+# Options -MultiViews
 
 # ------------------------------------------------------------------------------
 # | Custom error messages / pages                                              |
