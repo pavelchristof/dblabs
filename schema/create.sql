@@ -36,6 +36,14 @@ create table Enumerations (
 
 -- Values.
 
+create table Fields (
+  id int primary key,
+  name varchar(1024) not null,
+  class int not null references Classes(id),
+  foreign key (id, name) references Values(id, name),
+  unique (name, class)
+);
+
 create table Enumerators (
   id int primary key,
   name varchar(1024) not null,

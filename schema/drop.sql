@@ -7,6 +7,7 @@ drop table Primitives cascade;
 drop table Classes cascade;
 drop table Enumerations cascade;
 
+drop table Fields cascade;
 drop table Enumerators cascade;
 drop table Functions cascade;
 drop table Arguments cascade;
